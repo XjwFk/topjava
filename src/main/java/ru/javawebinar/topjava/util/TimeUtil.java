@@ -11,6 +11,6 @@ public class TimeUtil {
 
     public static String formatLocalDateTime(LocalDateTime localDateTime) {
         String pattern = "yyyy-MM-dd HH:mm";
-        return localDateTime.format(DateTimeFormatter.ofPattern(pattern));
+        return localDateTime == null ? "" : localDateTime.format(DateTimeFormatter.ofPattern(pattern));
     }
 }

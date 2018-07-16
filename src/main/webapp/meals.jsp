@@ -1,6 +1,6 @@
+<%@ page import="ru.javawebinar.topjava.util.TimeUtil" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="f" uri="topjava.com/myfunctions" %>
 <html>
 <head>
     <title>Meals</title>
@@ -22,9 +22,10 @@
     </tr>
     </thead>
     <c:forEach items="${meals}" var="meal">
+        <jsp:useBean id="meal" scope="page" type="ru.javawebinar.topjava.model.MealWithExceed"/>
         <tr bgcolor="${meal.exceed ? "red" : "lightgreen"}">
             <td>${meal.id}</td>
-            <td>${f:formatLocalDateTime(meal.dateTime)}</td>
+            <td><%=TimeUtil.formatLocalDateTime(meal.getDateTime())%></td>
             <td>${meal.description}</td>
             <td>${meal.calories}</td>
             <td>${meal.exceed}</td>
